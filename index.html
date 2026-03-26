@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Treino para NP2</title>
+    <link rel="stylesheet" type="text/css" href="estilização/style.css">
+</head>
+
+<body>
+    <div class="titulo">
+        <h1>Informações sobre países</h1>
+    </div>
+    <div class="principal">
+        <hr>
+        <div class="select">
+
+            <h2>Selecione um país:</h2>
+            <img id="alemanha" src="imagens/alemanha.jpg" onclick="selecionarPais('alemanha')">
+            <img id="argentina" src="imagens/argentina.jpg" onclick="selecionarPais('argentina')">
+            <img id="brasil" src="imagens/brasil.jpg" onclick="selecionarPais('brasil')">
+            <img id="franca" src="imagens/franca.jpg" onclick="selecionarPais('franca')">
+            <img id="inglaterra" src="imagens/inglaterra.jpg" onclick="selecionarPais('inglaterra')">
+            <img id="jamaica" src="imagens/jamaica.jpg" onclick="selecionarPais('jamaica')">
+            <img id="suica" src="imagens/suica.jpg" onclick="selecionarPais('suica')">
+            <button onclick="limpar()">Limpar</button>
+
+        </div>
+        <br>
+        <hr>
+        <div class="conteudo">
+
+
+            <div class="bandeira">
+                <h2>Bandeira</h2>
+                <img id="bandeira-selecionada" src="imagens/nenhum.jpg">
+            </div>
+
+
+            <div class="info">
+                <h2>Informações</h2>
+                <div class="dados">
+                    <p id="nome">Nome:</p>
+                    <br>
+                    <p id="cont">Continente:</p>
+                    <br>
+                    <p id="cap">Capital:</p>
+                    <br>
+                    <p id="pop">População:</p>
+                    <br>
+                    <p id="ling"> Língua oficial:</p>
+                    <br>
+                    <p id="gov">Governo:</p>
+                    <br>
+                </div>
+            </div>
+
+
+            <div class="localizacao">
+                <h2>Localização</h2>
+                <img id="mapa" src="" alt="Localização">
+            </div>
+
+
+            <div class="imprimir">
+                <button onclick="exibirInformacoes()">Exibir informações</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function limpar() {
+            document.getElementById("nome").textContent = "Nome:";
+            document.getElementById("cont").textContent = "Continente:";
+            document.getElementById("cap").textContent = "Capital:";
+            document.getElementById("pop").textContent = "População:";
+            document.getElementById("ling").textContent = "Língua oficial:";
+            document.getElementById("gov").textContent = "Governo:";
+            document.getElementById("bandeira-selecionada").src = "imagens/nenhum.jpg";
+            document.getElementById("mapa").src = "";
+            document.getElementById("local").textContent = "NENHUM SELECIONADO";
+        }
+
+        function selecionarPais(pais) {
+            var info = obterInformacoes(pais);
+            document.getElementById("nome").textContent = "Nome: " + info.nome;
+            document.getElementById("cont").textContent = "Continente: " + info.continente;
+            document.getElementById("cap").textContent = "Capital: " + info.capital;
+            document.getElementById("pop").textContent = "População: " + info.populacao;
+            document.getElementById("ling").textContent = "Língua oficial: " + info.lingua;
+            document.getElementById("gov").textContent = "Governo: " + info.governo;
+            document.getElementById("bandeira-selecionada").src = "imagens/" + pais + ".jpg";
+            document.getElementById("mapa").src = "imagens/" + pais + "loc.jpg";
+            document.getElementById("local").textContent = "Localização de " + info.nome;
+        }
+
+        function obterInformacoes(pais) {
+            var informacoes = {
+                alemanha: {
+                    nome: "Alemanha",
+                    continente: "Europa",
+                    capital: "Berlim",
+                    populacao: "83 milhões",
+                    lingua: "Alemão",
+                    governo: "República Federal Parlamentar"
+                },
+                argentina: {
+                    nome: "Argentina",
+                    continente: "América do Sul",
+                    capital: "Buenos Aires",
+                    populacao: "45 milhões",
+                    lingua: "Espanhol",
+                    governo: "República Presidencialista"
+                },
+                brasil: {
+                    nome: "Brasil",
+                    continente: "América do Sul",
+                    capital: "Brasília",
+                    populacao: "213 milhões",
+                    lingua: "Português",
+                    governo: "República Federativa Presidencialista"
+                },
+                franca: {
+                    nome: "França",
+                    continente: "Europa",
+                    capital: "Paris",
+                    populacao: "67 milhões",
+                    lingua: "Francês",
+                    governo: "República Semi-Presidencialista"
+                },
+                inglaterra: {
+                    nome: "Inglaterra",
+                    continente: "Europa",
+                    capital: "Londres",
+                    populacao: "56 milhões",
+                    lingua: "Inglês",
+                    governo: "Monarquia Constitucional Parlamentar"
+                },
+                jamaica: {
+                    nome: "Jamaica",
+                    continente: "América do Norte",
+                    capital: "Kingston",
+                    populacao: "3 milhões",
+                    lingua: "Inglês",
+                    governo: "Monarquia Constitucional Parlamentar"
+                },
+                suica: {
+                    nome: "Suíça",
+                    continente: "Europa",
+                    capital: "Berna",
+                    populacao: "8 milhões",
+                    lingua: "Alemão, Francês, Italiano e Romanche",
+                    governo: "República Federativa Semi-Direta"
+                }
+            };
+            return informacoes[pais];
+        }
+
+        function exibirInformacoes() {
+            var infoPais = document.getElementById("nome").textContent + "\n" +
+                document.getElementById("cont").textContent + "\n" +
+                document.getElementById("cap").textContent + "\n" +
+                document.getElementById("pop").textContent + "\n" +
+                document.getElementById("ling").textContent + "\n" +
+                document.getElementById("gov").textContent;
+            alert(infoPais);
+        }
+    </script>
+</body>
+
+</html>
